@@ -74,7 +74,6 @@ app.whenReady().then(() => {
     tray.setContextMenu(contextMenu)
 })
 
-
 async function sendSignInAlert() {
 
     
@@ -87,7 +86,7 @@ async function sendSignInAlert() {
     const id = 'd02d933a-4232-4812-a857-3b1d20a8aba5'
     const requestOptions = {
         headers: {
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer ${file.get("key")}`,
         }
     }
     const response = await fetch(`https://api.sendgrid.com/v3/designs/d02d933a-4232-4812-a857-3b1d20a8aba5`, requestOptions)
