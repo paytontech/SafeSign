@@ -1,10 +1,13 @@
 window.api.receive('settingsInfo', function(data) {
     console.log(data);
-    setTimeout(function() {var emailBox = document.getElementById("email-input");
+    setTimeout(function() {
+    var emailBox = document.getElementById("email-input");
     var nameBox = document.getElementById("name-input");
+    var sgBox = document.getElementById("sendgrid-api");
     emailBox.setAttribute('value' , data.email);
     nameBox.setAttribute('value' , data.deviceName);
-    }, 1000);
+    sgBox.setAttribute('value' , data.key);
+    }, 200);
 })
 window.onload = function() {
     
@@ -27,4 +30,12 @@ function setName() {
 }
 function testEmail() {
     
+}
+function validateSGKey() {
+    var keyVal = document.getElementById("sendgrid-api").value;
+    var data = {
+        key: keyVal,
+    }
+    console.log(data);
+    window.api.send('validateSGKey', data);
 }

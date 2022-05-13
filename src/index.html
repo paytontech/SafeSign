@@ -7,6 +7,7 @@
     <title>SafeSign</title>
     <script src="settings.js"></script>
     <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
 </head>
 <body>
     <center>
@@ -18,9 +19,16 @@
            <p>enter a nickname for this computer:</p>
            <input type="text" id="name-input">
            <button id="name-button" onclick="setName()">Set</button>
+           <p>enter a sendgrid API key</p>
+           <input type="text" id="sendgrid-api">
+            <button id="sg-key" onclick="validateSGKey()">Submit API key</button>
         </form>
          
         <button onclick="testEmail()">Send Test Email</button>
+        <br>
+        <span class="material-symbols-outlined">priority_high</span>
+            <p>due to SendGrid guidelines, you must generate and enter your own API key. Yes, it's annoying, but at the moment it's all we can do!</p>
+            
     </center>
     
     

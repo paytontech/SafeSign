@@ -23,8 +23,8 @@ const createWindow = () => {
         webPreferences: {
         nodeIntegration: true,
         enableRemoteModule: true,
-        preload: path.join(__dirname, './preload.js'),
-        icon: path.join(__dirname, './assets/appicon.png')
+        preload: path.join(__dirname, 'preload.js'),
+        icon: path.join(__dirname, '\\assets\\appicon.ico')
         },
         
     })
@@ -49,7 +49,7 @@ app.whenReady().then(() => {
     })
     
     
-    tray = new Tray(path.join(__dirname, './assets/trayicon.png'))
+    tray = new Tray(path.join(__dirname, '\\assets\\trayicon.jpg'))
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Show App', click: () => {
             createWindow()
@@ -73,9 +73,10 @@ app.whenReady().then(() => {
     tray.setToolTip('Get notified when someone signs into your PC.')
     tray.setContextMenu(contextMenu)
 })
-sgMail.setApiKey('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');
+
 
 async function sendSignInAlert() {
+
     
     
     file = editJsonFile(filePath)
@@ -91,8 +92,9 @@ async function sendSignInAlert() {
     }
     const response = await fetch(`https://api.sendgrid.com/v3/designs/d02d933a-4232-4812-a857-3b1d20a8aba5`, requestOptions)
     const data = await response.json()
+    sgMail.setApiKey(file.get("key"));
     if (notificationsEnabled) {
-        
+
         setTimeout(() => {
             const msg = {
                 to: email,
@@ -134,6 +136,7 @@ function firstLaunch() {
                     "email": "",
                     "deviceName": "",
                     "notifications": true,
+                    "key": "",
                 }
 
                 const data = JSON.stringify(defaultSettings);
@@ -158,5 +161,12 @@ ipcMain.on("setName", (event, arg) => {
     var file = editJsonFile(filePath)
     console.log(file)
     file.set("deviceName", arg.name)
+    file.save()
+})
+ipcMain.on("validateSGKey", (event, arg) => {
+    console.log("validate key")
+    var file = editJsonFile(filePath)
+    console.log(arg)
+    file.set("key", arg.key)
     file.save()
 })

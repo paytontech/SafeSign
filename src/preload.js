@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld(
     "api", {
         send: (channel, data) => {
             // whitelist channels
-            let validChannels = ["toMain", "setEmail", "setName"];
+            let validChannels = ["toMain", "setEmail", "setName", "validateSGKey"];
             if (validChannels.includes(channel)) {
                 ipcRenderer.send(channel, data);
             }
