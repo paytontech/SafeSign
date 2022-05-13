@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSign</title>
+    <script src="settings.js"></script>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <center>
+        <h1>SafeSign</h1>
+        <p>enter your email:</p>
+        <form>
+            <input type="text" id="email-input">
+            <button id="email-button" onclick="setEmail()">Set</button>
+           <p>enter a nickname for this computer:</p>
+           <input type="text" id="name-input">
+           <button id="name-button" onclick="setName()">Set</button>
+        </form>
+         
+        <button onclick="testEmail()">Send Test Email</button>
+    </center>
+    
+    
+</body>
+</html>
