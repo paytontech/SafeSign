@@ -73,7 +73,7 @@ app.whenReady().then(() => {
     tray.setToolTip('Get notified when someone signs into your PC.')
     tray.setContextMenu(contextMenu)
 })
-sgMail.setApiKey('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');
+sgMail.setApiKey('WUH OH WASNT SUPPOSED TO SHOW THAT HAHA ONE SECOND UHHHH');
 
 async function sendSignInAlert() {
     
